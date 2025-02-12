@@ -1,0 +1,13 @@
+.container section {
+    padding: 0.5vw;
+    margin: 2vw 17vw;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+@media (max-width: 1024px) {
+    .container section{
+        margin: 2vw 10vw;
+    }
+}

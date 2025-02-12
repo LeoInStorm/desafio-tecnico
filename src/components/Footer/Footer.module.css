@@ -1,0 +1,37 @@
+.rodape {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: var(--cor-fundo);
+    color: var(--branco);
+    border-top:0.5px solid var(--cor-bordas);
+    margin-top: 5vw;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    height: 5vw;
+}
+
+
+.rodape p{
+    text-align: center;
+    font-size: 1vw;
+    font-weight: 400;
+}
+
+.rodape img {
+    width: 2vw;
+}
+
+
+@media (max-width: 1024px) {
+
+    .rodape{
+        height: 10vw;
+    }
+    .rodape p {
+        font-size: 3.0vw;
+    }
+    .rodape img {
+        width: 4vw;
+    }
+}

@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+    justify-content: center;
+    color: var(--cor-fonte);
+}
+
+.container h2{
+    text-align: center;
+}
+
+.imagem {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}

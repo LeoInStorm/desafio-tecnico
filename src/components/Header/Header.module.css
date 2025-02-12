@@ -1,0 +1,35 @@
+.cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1vw 5vw;
+    background-color: var(--cor-fundo);
+    border-bottom:0.5px solid var(--cor-bordas);
+    margin: 0vw 2vw;
+}
+
+.link{
+    text-decoration: none;
+    color: var(--branco);
+    font-size: 1vw;
+}
+.imagem{
+    width: 10vw;
+    height: 3vw;   
+}
+
+
+@media (max-width: 1024px) {
+    .cabecalho {
+        padding: 2vw 8vw;
+    }
+    
+    .link{
+        font-size: 2vw;
+    }
+    
+    .imagem{
+        width: 20vw;
+        height: 6vw;
+    }
+}
