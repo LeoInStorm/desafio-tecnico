@@ -1,79 +1,76 @@
 import { useState } from 'react';
-import type { Task, Column as ColumnType } from '../../model/types';
-import { Column } from '../../components/Column';
 import { DndContext, DragEndEvent } from '@dnd-kit/core';
+import { Column } from '../../components/Column';
+import { AddTaskModal } from '../../components/AddTaskModal';
+import useBoardStore from '../../store/BoardStore';
+import { Task, TaskStatus, Column as ColumnType } from '../../typings';
+import { TaskModal } from '../../components/TaskModal';
 
 const COLUMNS: ColumnType[] = [
   { id: 'BACKLOG', title: 'Backlog' },
   { id: 'A_FAZER', title: 'A fazer' },
   { id: 'EM_ANDAMENTO', title: 'Em andamento' },
   { id: 'FASE_DE_TESTES', title: 'Fase de testes' },
-  { id: 'CONCLUIDO', title: 'Concluido' },
-];
-
-const INITIAL_TASKS: Task[] = [
-  {
-    id: '1',
-    title: 'Research Project',
-    description: 'Gather requirements and create initial documentation',
-    status: 'BACKLOG',
-  },
-  {
-    id: '2',
-    title: 'Design System',
-    description: 'Create component library and design tokens',
-    status: 'BACKLOG',
-  },
-  {
-    id: '3',
-    title: 'API Integration',
-    description: 'Implement REST API endpoints',
-    status: 'A_FAZER',
-  },
-  {
-    id: '4',
-    title: 'Testing',
-    description: 'Write unit tests for core functionality',
-    status: 'EM_ANDAMENTO',
-  },
+  { id: 'CONCLUIDO', title: 'Concluído' },
 ];
 
 export default function Board() {
-  const [tasks, setTasks] = useState<Task[]>(INITIAL_TASKS);
+  const tasks = useBoardStore((state) => state.tasks);
+  const updateTask = useBoardStore((state) => state.updateTask);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [selectedColumn, setSelectedColumn] = useState<TaskStatus>('BACKLOG');
+
+  // Para o modal de detalhes do card
+  const [selectedTask, setSelectedTask] = useState<Task | null>(null);
+  const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
 
   function handleDragEnd(event: DragEndEvent) {
     const { active, over } = event;
-
     if (!over) return;
-
     const taskId = active.id as string;
-    const newStatus = over.id as Task['status'];
-
-    setTasks(() =>
-      tasks.map((task) =>
-        task.id === taskId
-          ? {
-            ...task,
-            status: newStatus,
-          }
-          : task,
-      ),
-    );
+    const newStatus = over.id as TaskStatus;
+    updateTask(taskId, { status: newStatus });
   }
 
+  const handleOpenAddModal = (columnId: TaskStatus) => {
+    setSelectedColumn(columnId);
+    setIsAddModalOpen(true);
+  };
+
+  const handleTaskClick = (task: Task) => {
+    setSelectedTask(task);
+    setIsTaskModalOpen(true);
+  };
+
   return (
-    <div className="p-4 align-center">
-      <div className="flex gap-8">
+    <div className="p-4">
+      <h1 className="text-2xl font-bold mb-4">Kanban Board</h1>
+      <AddTaskModal
+        isOpen={isAddModalOpen}
+        onClose={() => setIsAddModalOpen(false)}
+        defaultStatus={selectedColumn}
+      />
+      {selectedTask && (
+        <TaskModal
+          task={selectedTask}
+          isOpen={isTaskModalOpen}
+          onClose={() => {
+            setIsTaskModalOpen(false);
+            setSelectedTask(null);
+          }}
+        />
+      )}
+      <div className="flex gap-8 overflow-auto">
         <DndContext onDragEnd={handleDragEnd}>
-          {COLUMNS.map((column) => {
-            return (
-              <Column
-                key={column.id}
-                column={column}
-                tasks={tasks.filter((task) => task.status === column.id)}
-              />
-            );
-          })}
+          {COLUMNS.map((column) => (
+            <Column
+              key={column.id}
+              column={column}
+              tasks={tasks.filter((task) => task.status === column.id)}
+              onAddCard={handleOpenAddModal}
+              onTaskClick={handleTaskClick}
+            />
+          ))}
         </DndContext>
       </div>
     </div>

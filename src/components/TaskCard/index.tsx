@@ -1,11 +1,12 @@
 import { useDraggable } from '@dnd-kit/core';
-import { Task } from '../../model/types';
+import { Task } from '../../typings';
 
 type TaskCardProps = {
   task: Task;
+  onClick?: (task: Task) => void;
 };
 
-export function TaskCard({ task }: TaskCardProps) {
+export function TaskCard({ task, onClick }: TaskCardProps) {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: task.id,
   });
@@ -21,6 +22,7 @@ export function TaskCard({ task }: TaskCardProps) {
       ref={setNodeRef}
       {...listeners}
       {...attributes}
+      onClick={() => onClick && onClick(task)}
       className="cursor-grab rounded-lg bg-neutral-700 p-4 shadow-sm hover:shadow-md"
       style={style}
     >
