@@ -10,7 +10,6 @@ const AppRoutes = () => {
         <Route path="/" element={<PaginaBase />} >
         <Route index element={<Board/>}/>
         <Route path="*" element={<NaoEncontrada/>}/>
-
         </Route>
       </Routes >
     </Router>

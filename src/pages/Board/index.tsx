@@ -43,7 +43,6 @@ export default function Board() {
 
   return (
     <div className="p-4 items-center">
-      <h1 className="text-2xl font-bold mb-4">Desafio Tecnico</h1>
       <AddTaskModal
         isOpen={isAddModalOpen}
         onClose={() => setIsAddModalOpen(false)}
