@@ -20,7 +20,6 @@ export default function Board() {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [selectedColumn, setSelectedColumn] = useState<TaskStatus>('BACKLOG');
 
-  // Para o modal de detalhes do card
   const [selectedTask, setSelectedTask] = useState<Task | null>(null);
   const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
 
@@ -43,8 +42,8 @@ export default function Board() {
   };
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Kanban Board</h1>
+    <div className="p-4 items-center">
+      <h1 className="text-2xl font-bold mb-4">Desafio Tecnico</h1>
       <AddTaskModal
         isOpen={isAddModalOpen}
         onClose={() => setIsAddModalOpen(false)}
@@ -60,7 +59,7 @@ export default function Board() {
           }}
         />
       )}
-      <div className="flex gap-8 overflow-auto">
+      <div className="flex justify-center gap-8">
         <DndContext onDragEnd={handleDragEnd}>
           {COLUMNS.map((column) => (
             <Column

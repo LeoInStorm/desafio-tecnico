@@ -24,9 +24,9 @@ export function Column({ column, tasks, onAddCard, onTaskClick }: ColumnProps) {
       </div>
       <button
         onClick={() => onAddCard(column.id)}
-        className="mt-4 bg-blue-500 text-white px-2 py-1 rounded"
+        className="mt-4 bg-neutral-800 text-white px-2 py-1 rounded hover:bg-neutral-600 cursor-pointer"
       >
-        Criar novo card
+      + Criar novo card
       </button>
     </div>
   );

@@ -24,7 +24,7 @@ export function AddTaskModal({ isOpen, onClose, defaultStatus }: AddTaskModalPro
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-10 z-50">
+    <div className="fixed inset-0 flex items-center justify-center backdrop-blur-lg z-50">
       <div className="bg-neutral-700  p-6 rounded-md w-96">
         <h2 className="text-lg font-bold mb-4">Adicionar Tarefa</h2>
         <div className="mb-4">

@@ -18,16 +18,17 @@ export function TaskCard({ task, onClick }: TaskCardProps) {
     : undefined;
 
   return (
-    <div
-      ref={setNodeRef}
-      {...listeners}
-      {...attributes}
-      onClick={() => onClick && onClick(task)}
-      className="cursor-grab rounded-lg bg-neutral-700 p-4 shadow-sm hover:shadow-md"
-      style={style}
-    >
-      <h3 className="font-medium text-neutral-100">{task.title}</h3>
-      <p className="mt-2 text-sm text-neutral-400">{task.description}</p>
+    <div ref={setNodeRef} {...listeners} {...attributes} style={style}>
+      <div
+        onDoubleClick={(e) => {
+          e.stopPropagation();
+          onClick && onClick(task);
+        }}
+        className="cursor-grab rounded-lg bg-neutral-700 p-4 shadow-sm hover:shadow-md"
+      >
+        <h3 className="font-medium text-neutral-100">{task.title}</h3>
+        <p className="mt-2 text-sm text-neutral-400">{task.description}</p>
+      </div>
     </div>
   );
 }
