@@ -25,6 +25,3 @@
 como nunca fiz um D&D ou uma ferramenta parecida com o trello decidi que iria aprender durante o teste e me adaptar, como tenho facilidade e conhecimento da lingua inglesa, sabendo ler e escrever e entender a fala sem dificuldades, decidi que seria a melhor ferramenta para gerir os estados da minha aplicação.
 - DnD kit: Foi apenas uma escolha que mais se adequou ao projeto por ser uma biblioteca que permite o arrastar e soltar de forma mais simplificada com videos explicativos.
 
-
-
-```
