@@ -4,7 +4,7 @@
     justify-content: center;
     flex-wrap: wrap;
     text-align: center;
-
+    height: auto;
 }
 
 @media (max-width: 1024px) {

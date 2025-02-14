@@ -5,12 +5,9 @@
 - 1° copie a URL : https://github.com/LeoInStorm/desafio-tecnico.git
 - 2° abra o terminal na pasta que deseja instalar e escreva: git clone https://github.com/LeoInStorm/desafio-tecnico.git
 - 3° pressione enter e espere até que o repositório seja clonado.
-- 4° caso haja a necessidade utilize os plugins que foram instalados conforme a sessão "Plugins Instalados".
+- 4° digite no terminal do projeto clonado npm install ou npm i.
+- 5° caso haja a necessidade utilize os plugins que foram instalados conforme a sessão "Plugins Instalados".
 
-
-## O Projeto se encontra quase finalizado faltando ainda:
-
-1° Possivel implementação de testes com Jest.(Necessito de adaptção).
 
 ## Versão do Node.js: v20.11.0
 

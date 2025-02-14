@@ -58,7 +58,7 @@ export default function Board() {
           }}
         />
       )}
-      <div className="flex justify-center gap-8">
+      <div className="flex justify-center flex-wrap gap-8">
         <DndContext onDragEnd={handleDragEnd}>
           {COLUMNS.map((column) => (
             <Column

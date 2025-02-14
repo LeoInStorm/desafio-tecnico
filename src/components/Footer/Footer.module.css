@@ -11,17 +11,11 @@
     height: 5vw;
 }
 
-
 .rodape p{
     text-align: center;
     font-size: 1vw;
     font-weight: 400;
 }
-
-.rodape img {
-    width: 2vw;
-}
-
 
 @media (max-width: 1024px) {
 
@@ -29,9 +23,6 @@
         height: 10vw;
     }
     .rodape p {
-        font-size: 3.0vw;
-    }
-    .rodape img {
-        width: 4vw;
+        font-size: 5vw;
     }
 }
